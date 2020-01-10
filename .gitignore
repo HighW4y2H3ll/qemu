@@ -1,9 +1,6 @@
 /.doctrees
 /config-devices.*
 /config-all-devices.*
-/config-all-disas.*
-/config-host.*
-/config-target.*
 /config.status
 /config-temp
 /elf2dmp
@@ -19,7 +16,6 @@
 /ui/shader/texture-blit-flip-vert.h
 /ui/input-keymap-*.c
 *-timestamp
-/*-softmmu
 /*-darwin-user
 /*-linux-user
 /*-bsd-user
@@ -27,7 +23,6 @@
 /ivshmem-server
 /libdis*
 /libuser
-/linux-headers/asm
 /qga/qapi-generated
 /qapi-gen-timestamp
 /qapi/qapi-builtin-types.[ch]
