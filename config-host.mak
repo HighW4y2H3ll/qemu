@@ -132,6 +132,7 @@ CONFIG_RTNETLINK=y
 CONFIG_REPLICATION=y
 CONFIG_AF_VSOCK=y
 CONFIG_SYSMACROS=y
+CONFIG_STATIC=y
 CONFIG_STATIC_ASSERT=y
 HAVE_UTMPX=y
 CONFIG_GETRANDOM=y
@@ -177,12 +178,12 @@ CFLAGS_NOPIE=-fno-pie
 QEMU_CFLAGS=-I/usr/include/pixman-1 -I$(SRC_PATH)/dtc/libfdt -Werror  -pthread -I/usr/include/glib-2.0 -I/usr/lib/mips-linux-gnu/glib-2.0/include -fPIE -DPIE -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -std=gnu99  -Wexpansion-to-defined -Wendif-labels -Wno-shift-negative-value -Wno-missing-include-dirs -Wempty-body -Wnested-externs -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration -Wold-style-definition -Wtype-limits -fstack-protector-strong -I$(SRC_PATH)/capstone/include
 QEMU_CXXFLAGS= -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -Werror -pthread -I/usr/include/glib-2.0 -I/usr/lib/mips-linux-gnu/glib-2.0/include -fPIE -DPIE -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wall -Wundef -Wwrite-strings -fno-strict-aliasing -fno-common -fwrapv -std=gnu++98 -Wexpansion-to-defined -Wendif-labels -Wno-shift-negative-value -Wno-missing-include-dirs -Wempty-body -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wtype-limits -fstack-protector-strong -I$(SRC_PATH)/capstone/include
 QEMU_INCLUDES=-iquote $(SRC_PATH)/tcg -iquote $(SRC_PATH)/tcg/mips -I$(SRC_PATH)/linux-headers -I/workdir/qemu/linux-headers -iquote . -iquote $(SRC_PATH) -iquote $(SRC_PATH)/accel/tcg -iquote $(SRC_PATH)/include -iquote $(SRC_PATH)/disas/libvixl
-LDFLAGS=-Wl,--warn-common -Wl,-z,relro -Wl,-z,now -pie -g 
+LDFLAGS=-Wl,--warn-common -Wl,-z,relro -Wl,-z,now -pie -g -static
 LDFLAGS_NOPIE=-nopie
 QEMU_LDFLAGS=-L$(BUILD_DIR)/dtc/libfdt 
 LD_REL_FLAGS=-r
 LD_I386_EMULATION=
-LIBS+=-L/usr/lib/mips-linux-gnu/ -lm -lz -lgthread-2.0 -pthread -lglib-2.0  -lrt
+LIBS+=-L/usr/lib/mips-linux-gnu/ -lm -lz -lgthread-2.0 -pthread -lglib-2.0  -lrt -lpcre -lgmodule-2.0 -lglib-2.0 -lresolv -ldl -lmount -lffi -lblkid -lselinux -luuid
 LIBS_TOOLS+=-lutil 
 PTHREAD_LIB=
 EXESUF=
