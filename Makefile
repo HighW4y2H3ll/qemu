@@ -511,6 +511,7 @@ capstone/all: .git-submodule-status
 
 .PHONY: slirp/all
 slirp/all: .git-submodule-status
+	$(shell $(SRC_PATH)/patch_slirp.sh $(SRC_PATH)/slirp/Makefile)
 	$(call quiet-command,$(MAKE) -C $(SRC_PATH)/slirp		\
 		BUILD_DIR="$(BUILD_DIR)/slirp" 			\
 		PKG_CONFIG="$(PKG_CONFIG)" 				\
